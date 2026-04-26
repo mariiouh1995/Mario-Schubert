@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mario Schubert – Visual Designer · UX/UI · Fotograf · Content Creator</title>
+  <meta name="description" content="Portfolio und Bewerbungsseite von Mario Schubert – Visual Designer, UX/UI-Spezialist, Fotograf und Content Creator aus Innsbruck.">
+  <meta property="og:title" content="Mario Schubert – Visual Designer & Fotograf">
+  <meta property="og:description" content="6+ Jahre Erfahrung. Drei eigene Marken. Innsbruck & Remote.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    /* ── VARIABLES ── */
+    :root {
+      --bg:       #0c0c0c;
+      --bg-2:     #111111;
+      --bg-3:     #181818;
+      --bg-4:     #202020;
+      --bg-5:     #2a2a2a;
+      --text:     #eeeeee;
+      --text-soft:#bbbbbb;
+      --text-muted:#777777;
+      --accent:   #e8b84b;
+      --accent-2: #c9963a;
+      --accent-bg:rgba(232,184,75,0.09);
+      --accent-border:rgba(232,184,75,0.28);
+      --border:   rgba(255,255,255,0.07);
+      --border-2: rgba(255,255,255,0.12);
+      --radius:   12px;
+      --radius-sm:7px;
+      --font:     "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+      --max-w:    1160px;
+    }
+
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; -webkit-text-size-adjust: 100%; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font); line-height: 1.65; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ── UTILITY ── */
+    .container   { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; }
+    .label       { font-size: 10.5px; font-weight: 700; letter-spacing: 3.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+    .h2          { font-size: clamp(1.9rem, 3.5vw, 3rem); font-weight: 800; letter-spacing: -1.2px; line-height: 1.08; margin-bottom: 12px; }
+    .lead        { color: var(--text-muted); font-size: 1rem; line-height: 1.8; max-width: 500px; margin-bottom: 52px; }
+    .divider     { height: 1px; background: var(--border); }
+    .tag         { display: inline-block; background: var(--bg-4); border: 1px solid var(--border); padding: 5px 13px; border-radius: 100px; font-size: 12px; font-weight: 600; color: var(--text-muted); }
+    .tag-accent  { background: var(--accent-bg); border-color: var(--accent-border); color: var(--accent); }
+
+    /* ── FADE-IN ── */
+    .fi { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .fi.v { opacity: 1; transform: translateY(0); }
+    .fi.d1{transition-delay:.10s}.fi.d2{transition-delay:.20s}.fi.d3{transition-delay:.30s}
+    .fi.d4{transition-delay:.40s}.fi.d5{transition-delay:.50s}
+
+    /* ── NAVIGATION ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+      padding: 16px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background 0.35s, border-color 0.35s, padding 0.3s;
+    }
+    nav.sticky {
+      background: rgba(12,12,12,0.92);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 40px;
+    }
+    .nav-brand { font-size: 16px; font-weight: 800; letter-spacing: -0.4px; }
+    .nav-brand span { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-links a { font-size: 13.5px; color: var(--text-muted); font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-social { display: flex; align-items: center; gap: 14px; }
+    .nav-social a {
+      display: flex; align-items: center; justify-content: center;
+      width: 34px; height: 34px;
+      border: 1px solid var(--border); border-radius: 8px;
+      color: var(--text-muted); transition: all 0.2s;
+    }
+    .nav-social a:hover { border-color: var(--accent-border); color: var(--accent); }
+    .nav-social svg { width: 16px; height: 16px; fill: currentColor; }
+    .nav-cta {
+      background: var(--accent); color: #000 !important;
+      padding: 8px 18px; border-radius: 7px;
+      font-weight: 700 !important; font-size: 13px !important;
+      transition: background 0.2s !important; letter-spacing: 0;
+    }
+    .nav-cta:hover { background: var(--accent-2) !important; color: #000 !important; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 0 0 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero-bg-glow {
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 70% 50% at 75% 35%, rgba(232,184,75,0.07) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 40% at 20% 75%, rgba(80,80,180,0.04) 0%, transparent 60%);
+    }
+    .hero-grid-overlay {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+    }
+    .hero-inner { padding: 140px 40px 0; max-width: var(--max-w); margin: 0 auto; width: 100%; }
+    .hero-availability {
+      display: inline-flex; align-items: center; gap: 9px;
+      background: var(--accent-bg); border: 1px solid var(--accent-border);
+      color: var(--accent); padding: 7px 15px; border-radius: 100px;
+      font-size: 12.5px; font-weight: 600; margin-bottom: 32px; width: fit-content;
+      animation: heroFade 0.7s ease both;
+    }
+    .avail-dot {
+      width: 7px; height: 7px; background: var(--accent); border-radius: 50%;
+      animation: blink 2s ease infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.25} }
+    @keyframes heroFade { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+
+    .hero-name {
+      font-size: clamp(4rem, 10vw, 9rem);
+      font-weight: 900; letter-spacing: -4px; line-height: 0.88;
+      margin-bottom: 24px;
+      animation: heroFade 0.75s ease 0.1s both;
+    }
+    .hero-name .first  { display: block; color: var(--text); }
+    .hero-name .last   { display: block; color: var(--accent); }
+
+    .hero-roles {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
+      margin-bottom: 28px;
+      animation: heroFade 0.8s ease 0.2s both;
+    }
+    .hero-role-item {
+      font-size: 15px; font-weight: 500; color: var(--text-soft);
+      padding: 6px 16px; border: 1px solid var(--border-2);
+      border-radius: 100px; background: var(--bg-3);
+    }
+    .hero-roles .sep { color: var(--text-muted); font-size: 18px; font-weight: 300; }
+
+    .hero-intro {
+      font-size: clamp(1rem, 1.6vw, 1.12rem);
+      color: var(--text-muted); line-height: 1.8;
+      max-width: 600px; margin-bottom: 40px;
+      animation: heroFade 0.85s ease 0.3s both;
+    }
+    .hero-intro strong { color: var(--text-soft); font-weight: 600; }
+
+    .hero-ctas {
+      display: flex; gap: 14px; flex-wrap: wrap;
+      margin-bottom: 60px;
+      animation: heroFade 0.9s ease 0.4s both;
+    }
+    .btn-primary {
+      background: var(--accent); color: #000;
+      padding: 14px 28px; border-radius: 8px;
+      font-weight: 700; font-size: 14px; letter-spacing: 0;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover {
+      background: var(--accent-2); transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(232,184,75,0.22);
+    }
+    .btn-outline {
+      background: transparent; border: 1px solid var(--border-2);
+      color: var(--text); padding: 14px 28px; border-radius: 8px;
+      font-weight: 500; font-size: 14px;
+      transition: border-color 0.2s, background 0.2s, transform 0.2s;
+    }
+    .btn-outline:hover {
+      border-color: rgba(255,255,255,0.28);
+      background: var(--bg-3); transform: translateY(-2px);
+    }
+
+    .hero-meta {
+      display: flex; align-items: center; gap: 28px; flex-wrap: wrap;
+      padding-top: 28px; border-top: 1px solid var(--border);
+      animation: heroFade 1s ease 0.55s both;
+    }
+    .hero-meta-item { font-size: 13px; color: var(--text-muted); font-weight: 500; }
+    .hero-meta-item span { color: var(--text-soft); }
+    .hero-meta-sep { width: 1px; height: 18px; background: var(--border-2); }
+    .hero-social-links { display: flex; gap: 12px; margin-left: auto; }
+    .social-link {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 12.5px; font-weight: 600; color: var(--text-muted);
+      border: 1px solid var(--border); padding: 7px 14px; border-radius: 7px;
+      transition: all 0.2s;
+    }
+    .social-link:hover { border-color: var(--accent-border); color: var(--accent); }
+    .social-link svg { width: 14px; height: 14px; fill: currentColor; flex-shrink: 0; }
+
+    /* ── ABOUT STRIP ── */
+    #about { background: var(--bg-2); padding: 72px 0; }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; align-items: center;
+    }
+    .about-quote {
+      font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+      font-weight: 700; letter-spacing: -0.5px; line-height: 1.45;
+      color: var(--text-soft);
+      border-left: 3px solid var(--accent); padding-left: 24px;
+      margin-bottom: 28px;
+    }
+    .about-body { font-size: 0.97rem; color: var(--text-muted); line-height: 1.85; }
+    .about-body + .about-body { margin-top: 14px; }
+    .about-facts {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 0; border: 1px solid var(--border); border-radius: var(--radius);
+      overflow: hidden; margin-top: 36px;
+    }
+    .fact-item {
+      padding: 22px 20px; text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .fact-item:last-child { border-right: none; }
+    .fact-num { font-size: 2.2rem; font-weight: 900; color: var(--accent); letter-spacing: -2px; line-height: 1; }
+    .fact-label { font-size: 11px; color: var(--text-muted); margin-top: 5px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+    .about-right { display: flex; flex-direction: column; gap: 14px; }
+    .about-info-card {
+      background: var(--bg-3); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 18px 22px;
+      display: flex; justify-content: space-between; align-items: center;
+      transition: border-color 0.2s;
+    }
+    .about-info-card:hover { border-color: var(--border-2); }
+    .aic-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); margin-bottom: 4px; }
+    .aic-value { font-size: 14px; font-weight: 600; color: var(--text-soft); }
+    .aic-pill { font-size: 12px; font-weight: 700; color: var(--accent); background: var(--accent-bg); border: 1px solid var(--accent-border); padding: 3px 10px; border-radius: 100px; }
+
+    /* ── EXPERIENCE TIMELINE ── */
+    #experience { padding: 100px 0; background: var(--bg); }
+    .timeline { position: relative; margin-top: 8px; }
+    .timeline::before {
+      content: ""; position: absolute;
+      left: 11px; top: 8px; bottom: 0;
+      width: 1px; background: var(--border-2);
+    }
+    .tl-entry { display: flex; gap: 36px; margin-bottom: 48px; position: relative; }
+    .tl-entry:last-child { margin-bottom: 0; }
+    .tl-left { flex-shrink: 0; width: 24px; display: flex; flex-direction: column; align-items: center; padding-top: 4px; }
+    .tl-dot {
+      width: 10px; height: 10px; min-height: 10px;
+      border-radius: 50%; border: 2px solid var(--accent);
+      background: var(--bg); position: relative; z-index: 1;
+      transition: background 0.2s;
+    }
+    .tl-entry:hover .tl-dot { background: var(--accent); }
+    .tl-right { flex: 1; }
+    .tl-card {
+      background: var(--bg-2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px 30px;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .tl-card:hover { border-color: var(--border-2); transform: translateX(4px); }
+    .tl-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin-bottom: 6px; }
+    .tl-role { font-size: 16.5px; font-weight: 800; letter-spacing: -0.3px; color: var(--text); }
+    .tl-date {
+      font-size: 11.5px; font-weight: 700; color: var(--accent);
+      background: var(--accent-bg); border: 1px solid var(--accent-border);
+      padding: 4px 11px; border-radius: 100px; white-space: nowrap; flex-shrink: 0;
+    }
+    .tl-company { font-size: 13.5px; font-weight: 600; color: var(--text-muted); margin-bottom: 16px; }
+    .tl-company .type { font-size: 11.5px; font-weight: 600; color: var(--bg-5); background: var(--bg-4); padding: 2px 9px; border-radius: 100px; margin-left: 8px; color: var(--text-muted); }
+    .tl-bullets { display: flex; flex-direction: column; gap: 8px; }
+    .tl-bullet { display: flex; gap: 12px; align-items: flex-start; }
+    .tl-bullet::before { content: "—"; color: var(--accent); font-size: 12px; font-weight: 700; flex-shrink: 0; margin-top: 3px; }
+    .tl-bullet-text { font-size: 13.5px; color: var(--text-muted); line-height: 1.65; }
+    .tl-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 18px; }
+    .tl-ref {
+      margin-top: 16px; padding: 12px 16px;
+      background: var(--bg-3); border-left: 3px solid var(--accent);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 12.5px; color: var(--text-muted); font-style: italic;
+    }
+    .tl-self { border-color: var(--accent-border) !important; }
+
+    /* ── SKILLS ── */
+    #skills { background: var(--bg-2); padding: 100px 0; }
+    .skills-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .skill-category {
+      background: var(--bg-3); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px 30px;
+      transition: border-color 0.25s;
+    }
+    .skill-category:hover { border-color: var(--border-2); }
+    .sc-title {
+      font-size: 13px; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 2px; color: var(--accent); margin-bottom: 18px;
+      padding-bottom: 14px; border-bottom: 1px solid var(--border);
+    }
+    .sc-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .sc-pill {
+      background: var(--bg-4); border: 1px solid var(--border);
+      padding: 6px 13px; border-radius: var(--radius-sm);
+      font-size: 12.5px; font-weight: 600; color: var(--text-muted);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .sc-pill:hover { border-color: var(--accent-border); color: var(--text-soft); }
+    .sc-pill.strong { border-color: var(--accent-border); color: var(--accent); background: var(--accent-bg); }
+
+    /* ── PORTFOLIO ── */
+    #portfolio { padding: 100px 0; background: var(--bg); }
+    .portfolio-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+    .portfolio-grid .feat { grid-column: span 2; }
+    .p-card {
+      background: var(--bg-2); border: 1px solid var(--border);
+      border-radius: 16px; overflow: hidden; cursor: pointer;
+      display: flex; flex-direction: column;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+    .p-card:hover {
+      border-color: var(--accent-border); transform: translateY(-5px);
+      box-shadow: 0 18px 56px rgba(0,0,0,0.45);
+    }
+    .p-thumb {
+      height: 190px; position: relative; overflow: hidden;
+      background: var(--bg-4); flex-shrink: 0;
+    }
+    .feat .p-thumb { height: 250px; }
+    .p-screenshot {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: top center;
+      transition: transform 0.45s ease;
+    }
+    .p-card:hover .p-screenshot { transform: scale(1.04); }
+    .p-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.6));
+    }
+    .p-fallback {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      font-size: 52px; opacity: 0; transition: opacity 0.2s;
+    }
+    .p-fallback.show { opacity: 1; }
+    .p-badge {
+      position: absolute; top: 12px; left: 12px; z-index: 2;
+      background: rgba(0,0,0,0.62); backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 3px 10px; border-radius: 100px;
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1.5px; color: rgba(255,255,255,0.55);
+    }
+    .p-logo-badge {
+      position: absolute; bottom: 12px; left: 12px; z-index: 2;
+      width: 40px; height: 40px; background: #fff; border-radius: 9px;
+      padding: 5px; box-shadow: 0 4px 14px rgba(0,0,0,0.45);
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
+    }
+    .p-logo-badge img { width: 100%; height: 100%; object-fit: contain; }
+    .p-ext {
+      position: absolute; top: 12px; right: 12px; z-index: 2;
+      width: 30px; height: 30px; background: rgba(0,0,0,0.62);
+      backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 12px; color: rgba(255,255,255,0.7);
+      opacity: 0; transition: opacity 0.2s;
+    }
+    .p-card:hover .p-ext { opacity: 1; }
+    .p-body { padding: 20px 22px; flex: 1; display: flex; flex-direction: column; }
+    .p-domain { font-size: 10.5px; font-weight: 700; color: var(--accent); letter-spacing: 0.5px; margin-bottom: 4px; }
+    .p-name { font-size: 17px; font-weight: 800; letter-spacing: -0.3px; margin-bottom: 8px; }
+    .p-desc { font-size: 13px; color: var(--text-muted); line-height: 1.65; flex: 1; margin-bottom: 16px; }
+    .p-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+    .p-tag { background: var(--accent-bg); border: 1px solid var(--accent-border); color: var(--accent); padding: 3px 9px; border-radius: 100px; font-size: 10.5px; font-weight: 700; }
+    .p-link { font-size: 12.5px; font-weight: 700; color: var(--text-muted); transition: color 0.2s; }
+    .p-card:hover .p-link { color: var(--accent); }
+
+    /* ── EDUCATION ── */
+    #education { background: var(--bg-2); padding: 100px 0; }
+    .edu-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+    .edu-card {
+      background: var(--bg-3); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px 26px;
+      transition: border-color 0.25s;
+    }
+    .edu-card:hover { border-color: var(--border-2); }
+    .edu-period { font-size: 11.5px; font-weight: 700; color: var(--accent); margin-bottom: 10px; }
+    .edu-title { font-size: 15.5px; font-weight: 800; letter-spacing: -0.3px; margin-bottom: 5px; }
+    .edu-inst { font-size: 13px; font-weight: 500; color: var(--text-muted); margin-bottom: 12px; }
+    .edu-note { font-size: 12.5px; color: var(--text-muted); line-height: 1.6; }
+
+    /* ── LANGUAGES ── */
+    #languages { padding: 72px 0; background: var(--bg); }
+    .lang-row { display: flex; gap: 18px; flex-wrap: wrap; }
+    .lang-card {
+      flex: 1; min-width: 200px;
+      background: var(--bg-2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px 26px;
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .lang-name { font-size: 17px; font-weight: 800; letter-spacing: -0.3px; }
+    .lang-level { font-size: 12px; font-weight: 600; color: var(--text-muted); }
+    .lang-bar { height: 4px; background: var(--bg-4); border-radius: 2px; overflow: hidden; margin-top: 6px; }
+    .lang-fill { height: 100%; background: var(--accent); border-radius: 2px; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--bg-2); padding: 100px 0; }
+    .contact-layout { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: start; }
+    .contact-headline {
+      font-size: clamp(2.4rem, 5vw, 4.5rem);
+      font-weight: 900; letter-spacing: -2.5px; line-height: 0.95; margin-bottom: 18px;
+    }
+    .contact-headline .hl { color: var(--accent); }
+    .contact-sub { color: var(--text-muted); font-size: 0.98rem; line-height: 1.8; margin-bottom: 32px; max-width: 420px; }
+    .contact-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .contact-info-stack { display: flex; flex-direction: column; gap: 12px; }
+    .ci-row {
+      display: flex; align-items: center; gap: 16px;
+      background: var(--bg-3); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 16px 20px;
+      transition: border-color 0.2s;
+    }
+    .ci-row:hover { border-color: var(--border-2); }
+    .ci-row a { color: var(--text-soft); font-size: 14px; font-weight: 600; transition: color 0.2s; }
+    .ci-row:hover a { color: var(--accent); }
+    .ci-label { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); margin-bottom: 3px; }
+    .ci-sep { width: 1px; height: 32px; background: var(--border-2); }
+    .ci-social-row { display: flex; gap: 12px; }
+    .ci-social-btn {
+      flex: 1; display: flex; align-items: center; justify-content: center; gap: 9px;
+      background: var(--bg-3); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 14px 20px;
+      font-size: 13px; font-weight: 700; color: var(--text-muted);
+      transition: all 0.2s;
+    }
+    .ci-social-btn:hover { border-color: var(--accent-border); color: var(--accent); }
+    .ci-social-btn svg { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 28px 40px; border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;
+    }
+    .footer-brand { font-size: 14.5px; font-weight: 800; letter-spacing: -0.4px; }
+    .footer-brand span { color: var(--accent); }
+    footer p { color: var(--text-muted); font-size: 12px; }
+    .footer-links { display: flex; gap: 18px; }
+    .footer-links a { color: var(--text-muted); font-size: 12px; font-weight: 500; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text-soft); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .about-grid      { grid-template-columns: 1fr; }
+      .skills-layout   { grid-template-columns: 1fr; }
+      .portfolio-grid  { grid-template-columns: 1fr 1fr; }
+      .portfolio-grid .feat { grid-column: span 2; }
+      .edu-grid        { grid-template-columns: 1fr; }
+      .contact-layout  { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      nav, nav.sticky  { padding: 12px 20px; }
+      .nav-links       { display: none; }
+      .container       { padding: 0 20px; }
+      #hero, #about, #experience, #skills, #portfolio, #education, #languages, #contact { padding: 80px 0; }
+      .hero-inner      { padding: 110px 20px 0; }
+      .hero-name       { letter-spacing: -2px; }
+      .portfolio-grid, .portfolio-grid .feat { grid-template-columns: 1fr; grid-column: span 1; }
+      .contact-actions { flex-direction: column; }
+      footer           { flex-direction: column; text-align: center; padding: 20px; }
+      .about-facts     { grid-template-columns: 1fr; }
+      .fact-item       { border-right: none; border-bottom: 1px solid var(--border); }
+      .fact-item:last-child { border-bottom: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="nav">
+  <div class="nav-brand">mario<span>.</span></div>
+  <div class="nav-links">
+    <a href="#about">Profil</a>
+    <a href="#experience">Erfahrung</a>
+    <a href="#skills">Skills</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#education">Ausbildung</a>
+    <a href="#contact">Kontakt</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px">
+    <div class="nav-social">
+      <a href="https://www.linkedin.com/in/marioschub" target="_blank" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+      <a href="https://www.instagram.com/marioschub/" target="_blank" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+    </div>
+    <a href="#contact" class="nav-links nav-cta" style="color:#000;font-weight:700;font-size:13px;padding:8px 18px;background:var(--accent);border-radius:7px;transition:background 0.2s">Kontakt</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-glow"></div>
+  <div class="hero-grid-overlay"></div>
+  <div class="hero-inner">
+    <div class="hero-availability">
+      <div class="avail-dot"></div>
+      Verfügbar &nbsp;·&nbsp; Innsbruck &amp; Remote
+    </div>
+    <h1 class="hero-name">
+      <span class="first">Mario</span>
+      <span class="last">Schubert</span>
+    </h1>
+    <div class="hero-roles">
+      <span class="hero-role-item">Visual Designer</span>
+      <span class="sep">·</span>
+      <span class="hero-role-item">UX/UI</span>
+      <span class="sep">·</span>
+      <span class="hero-role-item">Fotograf &amp; Videograf</span>
+      <span class="sep">·</span>
+      <span class="hero-role-item">Content Creator</span>
+    </div>
+    <p class="hero-intro">
+      Ich bin Mario – <strong>Visual Designer, UX-Spezialist und Fotograf</strong> aus Innsbruck.
+      Ich arbeite an der Schnittstelle zwischen Bild, Design und Strategie: für Marken, die nicht nur gut
+      aussehen wollen, sondern auch wirklich ankommen. Seit über 6 Jahren begleite ich Projekte von der ersten
+      Idee bis zum fertigen Content – mit drei eigenen Marken, einem geleitetem Kreativteam und Lehrerfahrung
+      an der TH Ingolstadt im Gepäck.
+    </p>
+    <div class="hero-ctas">
+      <a href="#portfolio" class="btn-primary">Projekte ansehen</a>
+      <a href="#contact" class="btn-outline">Kontakt aufnehmen</a>
+      <a href="#experience" class="btn-outline">Lebenslauf</a>
+    </div>
+    <div class="hero-meta">
+      <div class="hero-meta-item">Standort&nbsp; <span>Innsbruck, Tirol</span></div>
+      <div class="hero-meta-sep"></div>
+      <div class="hero-meta-item">Erfahrung&nbsp; <span>6+ Jahre</span></div>
+      <div class="hero-meta-sep"></div>
+      <div class="hero-meta-item">Studium&nbsp; <span>B.Sc. UX Design, THI</span></div>
+      <div class="hero-meta-sep"></div>
+      <div class="hero-meta-item">Sprachen&nbsp; <span>DE · EN · FR</span></div>
+      <div class="hero-social-links">
+        <a href="https://www.linkedin.com/in/marioschub" target="_blank" class="social-link"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg> LinkedIn</a>
+        <a href="https://www.instagram.com/marioschub/" target="_blank" class="social-link"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg> Instagram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid fi">
+      <div>
+        <div class="label">Profil</div>
+        <div class="about-quote">
+          "Wo die beste Kamera und die richtigen Tools nur einen Klick entfernt sind –
+          kombiniert mit Kreativität entstehen Inhalte, die die Welt verzaubern."
+        </div>
+        <p class="about-body">
+          Aufgewachsen im Großraum Ingolstadt, zuhause in Innsbruck. Mein Weg führte mich von der
+          Hochschule für User Experience Design direkt in die Selbstständigkeit – mit Stationen in
+          einem 10-köpfigen Kreativteam, als PMO-Koordinator in der Automobilindustrie und als Dozent
+          an der TH Ingolstadt. Heute bin ich vollständig selbstständig und betreue Unternehmen rund
+          um visuellen Content, UX-Design und Markenkommunikation.
+        </p>
+        <p class="about-body" style="margin-top:12px">
+          Ich bin kein reiner Ausführender. Ich denke strategisch mit, bringe eigene Ideen ein und
+          liefere Ergebnisse, die über das Briefing hinausgehen. Das spiegelt sich in den Projekten
+          wider – von der eigenentwickelten Lernplattform bis zur Event-Produktlinie.
+        </p>
+        <div class="about-facts">
+          <div class="fact-item">
+            <div class="fact-num">6+</div>
+            <div class="fact-label">Jahre Erfahrung</div>
+          </div>
+          <div class="fact-item">
+            <div class="fact-num">3</div>
+            <div class="fact-label">Eigene Marken</div>
+          </div>
+          <div class="fact-item">
+            <div class="fact-num">90+</div>
+            <div class="fact-label">Begleitete Studierende</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-right fi d2">
+        <div class="about-info-card">
+          <div><div class="aic-label">Standort</div><div class="aic-value">Bäckerbühlgasse 14, 6020 Innsbruck</div></div>
+        </div>
+        <div class="about-info-card">
+          <div><div class="aic-label">Studium</div><div class="aic-value">B.Sc. User Experience Design</div></div>
+          <div class="aic-pill">THI 2018–2021</div>
+        </div>
+        <div class="about-info-card">
+          <div><div class="aic-label">Status</div><div class="aic-value">Selbstständig seit 03/2024 &nbsp;·&nbsp; Offen für B2C-Anfragen</div></div>
+        </div>
+        <div class="about-info-card">
+          <div><div class="aic-label">Sprachen</div><div class="aic-value">Deutsch · Englisch (C1) · Französisch (B1)</div></div>
+        </div>
+        <div class="about-info-card">
+          <div><div class="aic-label">Kontakt</div><div class="aic-value">servus@marioschub.com</div></div>
+        </div>
+        <div class="about-info-card">
+          <div><div class="aic-label">Mobil</div><div class="aic-value">+43 677 636 8154</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="label fi">Berufserfahrung</div>
+    <h2 class="h2 fi">Werdegang</h2>
+    <p class="lead fi">Stationen in Kreativwirtschaft, Hochschullehre, Automotive und Unternehmertum.</p>
+
+    <div class="timeline">
+
+      <!-- 1: Selbstständig Wyldworks -->
+      <div class="tl-entry fi">
+        <div class="tl-left"><div class="tl-dot"></div></div>
+        <div class="tl-right">
+          <div class="tl-card tl-self">
+            <div class="tl-header">
+              <div class="tl-role">Founder &amp; Visual Designer</div>
+              <div class="tl-date">03/2024 – heute</div>
+            </div>
+            <div class="tl-company">
+              WYLDWORKS (B2B) + marioschub.com (B2C) + dasSpieglein.com
+              <span class="type">Vollzeit · Selbstständig</span>
+            </div>
+            <div class="tl-bullets">
+              <div class="tl-bullet"><span class="tl-bullet-text">Konzeption, Gestaltung und Umsetzung hochwertiger visueller Inhalte für Unternehmens- und Privatkunden (Foto, Video, Print, Digital)</span></div>
+              <div class="tl-bullet"><span class="tl-bullet-text">Grafikdesign &amp; Layout: Corporate Branding, Eventmaterialien, Print Collateral mit Adobe Creative Suite (Photoshop, Illustrator, InDesign)</span></div>
+              <div class="tl-bullet"><span class="tl-bullet-text">Social-Media-Design &amp; digitale Kampagnen: visuelle Content-Erstellung für Instagram, TikTok und Google Ads</span></div>
+              <div class="tl-bullet"><span class="tl-bullet-text">UX/UI Design: Wireframing, Prototyping und Usability-Optimierung mit Figma und Canva</span></div>
+              <div class="tl-bullet"><span class="tl-bullet-text">Projektmanagement: Kundenkommunikation, Terminkoordination und Qualitätssicherung</span></div>
+            </div>
+            <div class="tl-tags">
+              <span class="tag tag-accent">Figma</span><span class="tag tag-accent">Adobe CC</span><span class="tag tag-accent">Lightroom</span>
+              <span class="tag tag-accent">Final Cut Pro</span><span class="tag tag-accent">UX/UI</span><span class="tag tag-accent">Fotografie</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2: Dozent THI -->
+      <div class="tl-entry fi d1">
+        <div class="tl-left"><div class="tl-dot"></div></div>
+        <div class="tl-right">
+          <div class="tl-card">
+            <div class="tl-header">
+              <div class="tl-role">Dozent – Bachelor-Studiengang User Experience Design</div>
+              <div class="tl-date">2021 – 02/2024</div>
+            </div>
+            <div class="tl-company">
+              Technische Hochschule Ingolstadt
+              <span class="type">Teilzeit · Lehrauftrag</span>
+            </div>
+            <div class="tl-bullets">
+              <div class="tl-bullet"><span class="tl-bullet-text">Konzeption und Durchführung praxisorientierter Lehrveranstaltungen in Fotografie und Bildbearbeitung</span></div>
+              <div class="tl-bullet"><span class="tl-bullet-text">Themen: Kameratechnik, Licht, Post-Produktion, visuelle Kommunikation</span></div>
+              <div class="tl-bullet"><span class="tl-bullet-text">Mentoring von 90+ Studierenden in hybriden Lehrformaten über zwei Semester (MS Teams)</span></div>
+              <div class="tl-bullet"><span class="tl-bullet-text">Entwicklung von Lernmaterialien und Präsentationen zu moderner Fotografie und Design – inklusive eigener digitaler Kursplattform</span></div>
+            </div>
+            <div class="tl-tags">
+              <span class="tag">Lehre</span><span class="tag">Digitalfotografie</span><span class="tag">E-Learning</span><span class="tag">MS Teams</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3: In-Tech PMO -->
+      <div class="tl-entry fi d2">
+        <div class="tl-left"><div class="tl-dot"></div></div>
+        <div class="tl-right">
+          <div class="tl-card">
+            <div class="tl-header">
+              <div class="tl-role">PMO Coordinator (Project Management Office)</div>
+              <div class="tl-date">06/2023 – 02/2024</div>
+            </div>
+            <div class="tl-company">
+              In-Tech GmbH
+              <span class="type">Vollzeit</span>
+            </div>
+            <div class="tl-bullets">
+              <div class="tl-bullet"><span class="tl-bullet-text">Qualitätsmanagement und Prozessoptimierung in der Automobilindustrie</span></div>
+              <div class="tl-bullet"><span class="tl-bullet-text">Projektkoordination: Planung, Monitoring und Reporting komplexer Engineering-Projekte</span></div>
+              <div class="tl-bullet"><span class="tl-bullet-text">Unterstützung der Entwicklungs- und Produktionsabteilungen in Qualitätssicherung und Risikomanagement</span></div>
+              <div class="tl-bullet"><span class="tl-bullet-text">Problemlösung in dynamischen, schnelllebigen technischen Umgebungen</span></div>
+            </div>
+            <div class="tl-tags">
+              <span class="tag">A-SPICE</span><span class="tag">Automotive</span><span class="tag">PMO</span><span class="tag">SCRUM</span><span class="tag">Atlassian</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4: Achtzig20 -->
+      <div class="tl-entry fi d3">
+        <div class="tl-left"><div class="tl-dot"></div></div>
+        <div class="tl-right">
+          <div class="tl-card">
+            <div class="tl-header">
+              <div class="tl-role">Content &amp; Project Manager · UX-Designer · Fotograf &amp; Videograf</div>
+              <div class="tl-date">2019 – 05/2023</div>
+            </div>
+            <div class="tl-company">
+              Achtzig 20 GmbH
+              <span class="type">Vollzeit (ab 2021 Management) · zuvor Teilzeit Junior</span>
+            </div>
+            <div class="tl-bullets">
+              <div class="tl-bullet"><span class="tl-bullet-text">Co-Leitung eines 10-köpfigen Kreativteams mit Spezialisierung auf Foto, Video, Audio, Podcast und Animation</span></div>
+              <div class="tl-bullet"><span class="tl-bullet-text">Konzeption, Planung und Umsetzung umfassender Multimediaprojekte für Unternehmenskunden</span></div>
+              <div class="tl-bullet"><span class="tl-bullet-text">UX/UI Design: nutzerzentrierte Strategien, Wireframing, Prototyping und Usability-Tests für digitale Plattformen</span></div>
+              <div class="tl-bullet"><span class="tl-bullet-text">Social Media &amp; Performance Marketing: Entwicklung und Optimierung von Google Ads Kampagnen (SEA)</span></div>
+              <div class="tl-bullet"><span class="tl-bullet-text">Kundenakquise, strategische Beratung und langfristiges Beziehungsmanagement</span></div>
+            </div>
+            <div class="tl-tags">
+              <span class="tag">Content Production</span><span class="tag">Team Lead</span><span class="tag">Google Ads</span><span class="tag">UX/UI</span><span class="tag">Branding</span>
+            </div>
+            <div class="tl-ref">Arbeitszeugnis-Bewertung: <strong>"außerordentlich"</strong> – Bestbewertung</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5: Klinikum Praktikum -->
+      <div class="tl-entry fi">
+        <div class="tl-left"><div class="tl-dot"></div></div>
+        <div class="tl-right">
+          <div class="tl-card">
+            <div class="tl-header">
+              <div class="tl-role">Praktikum – Administration &amp; Qualitätsmanagement</div>
+              <div class="tl-date">2013, 2015, 2017, 2019</div>
+            </div>
+            <div class="tl-company">
+              Klinikum Ingolstadt GmbH
+              <span class="type">Praktikum (mehrfach)</span>
+            </div>
+            <div class="tl-bullets">
+              <div class="tl-bullet"><span class="tl-bullet-text">Healthcare Operations: Patientenaufnahme, Materialwirtschaft (Logistik, Sterilisation), Qualitäts- und Risikomanagement</span></div>
+              <div class="tl-bullet"><span class="tl-bullet-text">Administrative Prozesse: Abrechnungsmanagement, interne Audits, Compliance mit Gesundheitsstandards</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /timeline -->
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="label fi">Kenntnisse</div>
+    <h2 class="h2 fi">Skills &amp; Tools</h2>
+    <p class="lead fi">Von der Kamera bis zum Code – ein breites Spektrum an Werkzeugen, die ich im Alltag einsetze.</p>
+    <div class="skills-layout">
+
+      <div class="skill-category fi">
+        <div class="sc-title">Design &amp; Visual</div>
+        <div class="sc-pills">
+          <span class="sc-pill">Figma</span>
+          <span class="sc-pill">Photoshop</span>
+          <span class="sc-pill">Illustrator</span>
+          <span class="sc-pill">InDesign</span>
+          <span class="sc-pill">UX/UI</span>
+          <span class="sc-pill">Grafikdesign</span>
+          <span class="sc-pill">Procreate</span>
+          <span class="sc-pill">Webflow</span>
+          <span class="sc-pill">Canva</span>
+          <span class="sc-pill">Branding</span>
+          <span class="sc-pill">Wireframing</span>
+          <span class="sc-pill">Prototyping</span>
+          <span class="sc-pill">Typography</span>
+          <span class="sc-pill">Illustration</span>
+          <span class="sc-pill">Logodesign</span>
+          <span class="sc-pill">Farbkonzepte</span>
+          <span class="sc-pill">Moodboarding</span>
+          <span class="sc-pill">Printdesign</span>
+          <span class="sc-pill">Packaging</span>
+          <span class="sc-pill">Layoutgestaltung</span>
+          <span class="sc-pill">Compositing</span>
+          <span class="sc-pill">Retouching</span>
+        </div>
+      </div>
+
+      <div class="skill-category fi d1">
+        <div class="sc-title">Foto &amp; Video</div>
+        <div class="sc-pills">
+          <span class="sc-pill">Lightroom</span>
+          <span class="sc-pill">Final Cut Pro</span>
+          <span class="sc-pill">Premiere Pro</span>
+          <span class="sc-pill">After Effects</span>
+          <span class="sc-pill">Motion 5</span>
+          <span class="sc-pill">Color Grading</span>
+          <span class="sc-pill">Sound Design</span>
+          <span class="sc-pill">Artlist</span>
+          <span class="sc-pill">Drohne</span>
+          <span class="sc-pill">Produktfotografie</span>
+          <span class="sc-pill">Hochzeitsfotografie</span>
+          <span class="sc-pill">Reportage</span>
+          <span class="sc-pill">Kameratechnik</span>
+          <span class="sc-pill">Belichtung</span>
+          <span class="sc-pill">Bildkomposition</span>
+          <span class="sc-pill">Portraitfotografie</span>
+          <span class="sc-pill">Eventfotografie</span>
+          <span class="sc-pill">Architekturfotografie</span>
+          <span class="sc-pill">Schnitt</span>
+          <span class="sc-pill">Podcast</span>
+          <span class="sc-pill">Untertitelung</span>
+          <span class="sc-pill">Motion Graphics</span>
+          <span class="sc-pill">Studiobeleuchtung</span>
+        </div>
+      </div>
+
+      <div class="skill-category fi d2">
+        <div class="sc-title">Development &amp; Digital</div>
+        <div class="sc-pills">
+          <span class="sc-pill">HTML</span>
+          <span class="sc-pill">CSS</span>
+          <span class="sc-pill">JavaScript</span>
+          <span class="sc-pill">Python</span>
+          <span class="sc-pill">Java</span>
+          <span class="sc-pill">Webdesign</span>
+          <span class="sc-pill">Responsive Design</span>
+          <span class="sc-pill">Vercel</span>
+          <span class="sc-pill">GitHub</span>
+          <span class="sc-pill">WordPress</span>
+          <span class="sc-pill">Webflow</span>
+          <span class="sc-pill">CMS</span>
+          <span class="sc-pill">SEO</span>
+          <span class="sc-pill">Google Ads</span>
+          <span class="sc-pill">Analytics</span>
+          <span class="sc-pill">Conversion</span>
+          <span class="sc-pill">A/B-Testing</span>
+          <span class="sc-pill">Tracking</span>
+          <span class="sc-pill">Remarketing</span>
+          <span class="sc-pill">Performance</span>
+          <span class="sc-pill">Social Media</span>
+          <span class="sc-pill">Newsletter</span>
+          <span class="sc-pill">E-Commerce</span>
+          <span class="sc-pill">Moodle</span>
+          <span class="sc-pill">E-Learning</span>
+          <span class="sc-pill">Deployment</span>
+          <span class="sc-pill">Hosting</span>
+        </div>
+      </div>
+
+      <div class="skill-category fi d3">
+        <div class="sc-title">Methodik &amp; Management</div>
+        <div class="sc-pills">
+          <span class="sc-pill">Projektmanagement</span>
+          <span class="sc-pill">SCRUM</span>
+          <span class="sc-pill">Agile</span>
+          <span class="sc-pill">A-SPICE</span>
+          <span class="sc-pill">Atlassian</span>
+          <span class="sc-pill">Jira</span>
+          <span class="sc-pill">Confluence</span>
+          <span class="sc-pill">Kanban</span>
+          <span class="sc-pill">Pitching</span>
+          <span class="sc-pill">Präsentation</span>
+          <span class="sc-pill">Workshops</span>
+          <span class="sc-pill">Moderation</span>
+          <span class="sc-pill">Beratung</span>
+          <span class="sc-pill">Teamleitung</span>
+          <span class="sc-pill">Personalführung</span>
+          <span class="sc-pill">Qualitätssicherung</span>
+          <span class="sc-pill">Risikomanagement</span>
+          <span class="sc-pill">Prozessoptimierung</span>
+          <span class="sc-pill">Contentstrategie</span>
+          <span class="sc-pill">Briefing</span>
+          <span class="sc-pill">Konzeption</span>
+          <span class="sc-pill">Storyboarding</span>
+          <span class="sc-pill">Budgetplanung</span>
+          <span class="sc-pill">Stakeholder</span>
+          <span class="sc-pill">Reporting</span>
+          <span class="sc-pill">Onboarding</span>
+          <span class="sc-pill">Iteration</span>
+          <span class="sc-pill">Feedbackkultur</span>
+          <span class="sc-pill">Zeitplanung</span>
+          <span class="sc-pill">Priorisierung</span>
+          <span class="sc-pill">Lehre</span>
+          <span class="sc-pill">Didaktik</span>
+          <span class="sc-pill">Mentoring</span>
+          <span class="sc-pill">Kundenakquise</span>
+          <span class="sc-pill">Angebotserstellung</span>
+        </div>
+      </div>
+
+      <div class="skill-category fi d4" style="grid-column: span 2;">
+        <div class="sc-title">Künstliche Intelligenz &amp; KI-Projekte</div>
+        <div class="sc-pills">
+          <span class="sc-pill">ChatGPT</span>
+          <span class="sc-pill">Claude</span>
+          <span class="sc-pill">Perplexity</span>
+          <span class="sc-pill">Prompt Engineering</span>
+          <span class="sc-pill">KI-Workflow</span>
+          <span class="sc-pill">Midjourney</span>
+          <span class="sc-pill">Stable Diffusion</span>
+          <span class="sc-pill">Adobe Firefly</span>
+          <span class="sc-pill">Runway</span>
+          <span class="sc-pill">ElevenLabs</span>
+          <span class="sc-pill">Gamma</span>
+          <span class="sc-pill">Notion AI</span>
+          <span class="sc-pill">Copilot</span>
+          <span class="sc-pill">KI-Bildgenerierung</span>
+          <span class="sc-pill">KI-Videogenerierung</span>
+          <span class="sc-pill">KI-Texterstellung</span>
+          <span class="sc-pill">AI-Recherche</span>
+          <span class="sc-pill">KI in der Lehre</span>
+          <span class="sc-pill">THI-Kursplattform</span>
+          <span class="sc-pill">KI-Content</span>
+          <span class="sc-pill">Automatisierung</span>
+          <span class="sc-pill">KI-Skripterstellung</span>
+          <span class="sc-pill">AI-Didaktik</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="container">
+    <div class="label fi">Projekte</div>
+    <h2 class="h2 fi">Portfolio &amp; Marken</h2>
+    <p class="lead fi">Eigene Marken, Kundenprojekte und Lehrprojekte – alles live, alles real.</p>
+    <div class="portfolio-grid">
+
+      <!-- WYLDWORKS featured -->
+      <div class="p-card feat fi" onclick="window.open('https://www.wyldworks.de','_blank')">
+        <div class="p-thumb">
+          <div class="p-fallback" style="background:linear-gradient(135deg,#0c0c1a,#1a1a30)">⚡</div>
+          <img class="p-screenshot" data-src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.wyldworks.de?w=900" alt="wyldworks.de">
+          <div class="p-overlay"></div>
+          <div class="p-logo-badge"><img src="https://logo.clearbit.com/wyldworks.de" onerror="this.closest('.p-logo-badge').style.display='none'" alt="WYLDWORKS"></div>
+          <div class="p-badge">Eigene Marke · Agentur</div>
+          <div class="p-ext">&#8599;</div>
+        </div>
+        <div class="p-body">
+          <div class="p-domain">wyldworks.de</div>
+          <div class="p-name">WYLDWORKS</div>
+          <div class="p-desc">Kreative Foto- &amp; Videoagentur für den Mittelstand. Imagefilm, Short-Form Reels, Social Media Management und Content-Coaching. Referenzen u.a.: Aston Martin, Teufel, Padle City.</div>
+          <div class="p-tags"><span class="p-tag">Agentur</span><span class="p-tag">Video</span><span class="p-tag">Social Media</span><span class="p-tag">Branding</span></div>
+          <span class="p-link">Website besuchen &#8594;</span>
+        </div>
+      </div>
+
+      <!-- MARIOSCHUB -->
+      <div class="p-card fi d1" onclick="window.open('https://www.marioschub.com','_blank')">
+        <div class="p-thumb" style="background:linear-gradient(135deg,#1a0c0c,#2e1a1a)">
+          <div class="p-fallback">💍</div>
+          <img class="p-screenshot" data-src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.marioschub.com?w=640" alt="marioschub.com">
+          <div class="p-overlay"></div>
+          <div class="p-logo-badge"><img src="https://logo.clearbit.com/marioschub.com" onerror="this.closest('.p-logo-badge').style.display='none'" alt="marioschub"></div>
+          <div class="p-badge">Wedding · Foto &amp; Video</div>
+          <div class="p-ext">&#8599;</div>
+        </div>
+        <div class="p-body">
+          <div class="p-domain">marioschub.com</div>
+          <div class="p-name">Mario Schubert Photography</div>
+          <div class="p-desc">Hochzeitsfotografie &amp; -film in Innsbruck und Tirol. Reportage-Stil – ehrlich, ungezwungen, voller Leben.</div>
+          <div class="p-tags"><span class="p-tag">Hochzeit</span><span class="p-tag">Reportage</span><span class="p-tag">Film</span></div>
+          <span class="p-link">Website besuchen &#8594;</span>
+        </div>
+      </div>
+
+      <!-- DAS SPIEGLEIN -->
+      <div class="p-card fi d2" onclick="window.open('https://www.dasspieglein.com','_blank')">
+        <div class="p-thumb" style="background:linear-gradient(135deg,#0c1a0c,#1a2e1a)">
+          <div class="p-fallback">🪞</div>
+          <img class="p-screenshot" data-src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.dasspieglein.com?w=640" alt="dasspieglein.com">
+          <div class="p-overlay"></div>
+          <div class="p-logo-badge"><img src="https://logo.clearbit.com/dasspieglein.com" onerror="this.closest('.p-logo-badge').style.display='none'" alt="Das Spieglein"></div>
+          <div class="p-badge">Eigenes Produkt · Events</div>
+          <div class="p-ext">&#8599;</div>
+        </div>
+        <div class="p-body">
+          <div class="p-domain">dasspieglein.com</div>
+          <div class="p-name">Das Spieglein</div>
+          <div class="p-desc">Interaktiver Fotospiegel für Hochzeiten &amp; Events. Aus einer spontanen Idee wurde ein eigenes Produkt-Business.</div>
+          <div class="p-tags"><span class="p-tag">Produkt</span><span class="p-tag">Events</span><span class="p-tag">Entrepreneurship</span></div>
+          <span class="p-link">Website besuchen &#8594;</span>
+        </div>
+      </div>
+
+      <!-- GIRARDI OIL -->
+      <div class="p-card fi d3" onclick="window.open('https://www.thegirardioil.at','_blank')">
+        <div class="p-thumb" style="background:linear-gradient(135deg,#1a1a0c,#2a2a14)">
+          <div class="p-fallback">🫒</div>
+          <img class="p-screenshot" data-src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.thegirardioil.at?w=640" alt="thegirardioil.at">
+          <div class="p-overlay"></div>
+          <div class="p-logo-badge"><img src="https://logo.clearbit.com/thegirardioil.at" onerror="this.closest('.p-logo-badge').style.display='none'" alt="Girardi Oil"></div>
+          <div class="p-badge">Kundenprojekt · Tirol</div>
+          <div class="p-ext">&#8599;</div>
+        </div>
+        <div class="p-body">
+          <div class="p-domain">thegirardioil.at</div>
+          <div class="p-name">The Girardi Oil</div>
+          <div class="p-desc">Produktfotografie für eine Premium-Olivenöl-Marke aus Österreich – direkt im Olivenhain. Atmosphärische Bilder für den Luxus-Lebensmittelbereich.</div>
+          <div class="p-tags"><span class="p-tag">Produktfoto</span><span class="p-tag">Food &amp; Lifestyle</span><span class="p-tag">Premium</span></div>
+          <span class="p-link">Website besuchen &#8594;</span>
+        </div>
+      </div>
+
+      <!-- THI LERNPLATTFORM -->
+      <div class="p-card fi d4" onclick="window.open('https://thi-digitale-fotografie.vercel.app','_blank')">
+        <div class="p-thumb" style="background:linear-gradient(135deg,#0c0c1a,#1a0c2e)">
+          <div class="p-fallback">🎓</div>
+          <img class="p-screenshot" data-src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fthi-digitale-fotografie.vercel.app?w=640" alt="THI Kursplattform">
+          <div class="p-overlay"></div>
+          <div class="p-logo-badge"><img src="https://logo.clearbit.com/thi.de" onerror="this.closest('.p-logo-badge').style.display='none'" alt="THI"></div>
+          <div class="p-badge">E-Learning · THI Ingolstadt</div>
+          <div class="p-ext">&#8599;</div>
+        </div>
+        <div class="p-body">
+          <div class="p-domain">thi-digitale-fotografie.vercel.app</div>
+          <div class="p-name">THI Kursplattform</div>
+          <div class="p-desc">Eigenentwickelte, UX-optimierte Lernplattform für Digitalfotografie &amp; Bildbearbeitung an der THI. Interaktiv, mobil, built from scratch in HTML/JS.</div>
+          <div class="p-tags"><span class="p-tag">E-Learning</span><span class="p-tag">UX Design</span><span class="p-tag">HTML/JS</span><span class="p-tag">Eigenentwicklung</span></div>
+          <span class="p-link">Plattform besuchen &#8594;</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <div class="label fi">Ausbildung</div>
+    <h2 class="h2 fi">Schule &amp; Studium</h2>
+    <div class="edu-grid">
+
+      <div class="edu-card fi">
+        <div class="edu-period">10/2018 – 2021</div>
+        <div class="edu-title">Bachelor of Science – User Experience Design</div>
+        <div class="edu-inst">Technische Hochschule Ingolstadt</div>
+        <div class="edu-note">Schwerpunkte: UX-Methoden, Interface Design, Prototyping, visuelle Kommunikation, Usability Engineering</div>
+      </div>
+
+      <div class="edu-card fi d1">
+        <div class="edu-period">2014 – 2016</div>
+        <div class="edu-title">Fachoberschule / Berufsoberschule</div>
+        <div class="edu-inst">FOS/BOS Ingolstadt</div>
+        <div class="edu-note">Abschluss: Abitur (Allgemeine Hochschulreife)</div>
+      </div>
+
+      <div class="edu-card fi d2">
+        <div class="edu-period">2007 – 2014</div>
+        <div class="edu-title">Gymnasium – Allgemeine Hochschulvorbereitung</div>
+        <div class="edu-inst">Apian Gymnasium, Ingolstadt</div>
+        <div class="edu-note">Abschluss: Mittlere Reife</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- LANGUAGES -->
+<section id="languages">
+  <div class="container">
+    <div class="label fi">Sprachen</div>
+    <h2 class="h2 fi" style="margin-bottom:40px">Sprachkenntnisse</h2>
+    <div class="lang-row">
+      <div class="lang-card fi">
+        <div class="lang-name">Deutsch</div>
+        <div class="lang-level">Muttersprache</div>
+        <div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div>
+      </div>
+      <div class="lang-card fi d1">
+        <div class="lang-name">Englisch</div>
+        <div class="lang-level">Verhandlungssicher · C1</div>
+        <div class="lang-bar"><div class="lang-fill" style="width:85%"></div></div>
+      </div>
+      <div class="lang-card fi d2">
+        <div class="lang-name">Französisch</div>
+        <div class="lang-level">Gute Kenntnisse · B1</div>
+        <div class="lang-bar"><div class="lang-fill" style="width:50%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-layout">
+      <div class="fi">
+        <div class="label">Kontakt</div>
+        <h2 class="contact-headline">Lass uns<br><span class="hl">reden.</span></h2>
+        <p class="contact-sub">Du suchst einen multidisziplinären Kreativen mit Erfahrung in Design, Foto, Video und UX – für Tirol oder Remote? Ich freue mich auf deine Nachricht.</p>
+        <div class="contact-actions">
+          <a href="mailto:servus@marioschub.com" class="btn-primary">servus@marioschub.com</a>
+          <a href="tel:+436776368154" class="btn-outline">+43 677 636 8154</a>
+        </div>
+      </div>
+      <div class="fi d1">
+        <div class="contact-info-stack">
+          <div class="ci-row">
+            <div><div class="ci-label">Adresse</div><a href="https://maps.google.com/?q=Bäckerbühlgasse+14,+6020+Innsbruck" target="_blank">Bäckerbühlgasse 14, 6020 Innsbruck</a></div>
+          </div>
+          <div class="ci-row">
+            <div><div class="ci-label">E-Mail</div><a href="mailto:servus@marioschub.com">servus@marioschub.com</a></div>
+          </div>
+          <div class="ci-row">
+            <div><div class="ci-label">Mobil</div><a href="tel:+436776368154">+43 677 636 8154</a></div>
+          </div>
+          <div class="ci-row">
+            <div><div class="ci-label">Portfolio</div><a href="https://www.wyldworks.de" target="_blank">wyldworks.de</a></div>
+          </div>
+          <div class="ci-social-row">
+            <a href="https://www.linkedin.com/in/marioschub" target="_blank" class="ci-social-btn">
+              <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              LinkedIn
+            </a>
+            <a href="https://www.instagram.com/marioschub/" target="_blank" class="ci-social-btn">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+              Instagram
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">mario<span>schubert</span></div>
+  <p>Visual Designer · UX/UI · Fotograf · Content Creator · Innsbruck &copy; 2026</p>
+  <div class="footer-links">
+    <a href="https://www.wyldworks.de" target="_blank">wyldworks.de</a>
+    <a href="https://www.marioschub.com" target="_blank">marioschub.com</a>
+    <a href="https://www.dasspieglein.com" target="_blank">dasspieglein.com</a>
+  </div>
+</footer>
+
+<script>
+  // Sticky nav
+  const nav = document.getElementById("nav");
+  window.addEventListener("scroll", () => nav.classList.toggle("sticky", window.scrollY > 60));
+
+  // IntersectionObserver: fade-in + lazy screenshot loading
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      if (el.classList.contains("fi")) { el.classList.add("v"); io.unobserve(el); }
+      if (el.classList.contains("p-screenshot")) {
+        el.src = el.dataset.src;
+        el.onload  = () => el.closest(".p-thumb").querySelector(".p-fallback").classList.remove("show");
+        el.onerror = () => { el.style.display="none"; el.closest(".p-thumb").querySelector(".p-fallback").classList.add("show"); };
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.06, rootMargin: "0px 0px -36px 0px" });
+
+  document.querySelectorAll(".fi, .p-screenshot").forEach(el => io.observe(el));
+
+  // Show fallback while screenshot loads
+  document.querySelectorAll(".p-screenshot").forEach(el => {
+    el.closest(".p-thumb").querySelector(".p-fallback").classList.add("show");
+  });
+
+  // Smooth scroll
+  document.querySelectorAll("a[href^=\"#\"]").forEach(a => {
+    a.addEventListener("click", e => {
+      e.preventDefault();
+      const t = document.querySelector(a.getAttribute("href"));
+      if (t) t.scrollIntoView({ behavior: "smooth" });
+    });
+  });
+</script>
+</body>
+</html>
