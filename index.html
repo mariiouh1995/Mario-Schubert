@@ -290,7 +290,7 @@
 
     /* ── SKILLS ── */
     #skills { background: var(--bg-2); padding: 100px 0; }
-    .skills-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .skills-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 100%; }
     .skill-category {
       background: var(--bg-3); border: 1px solid var(--border);
       border-radius: var(--radius); padding: 28px 30px;
@@ -472,8 +472,9 @@
       .contact-actions { flex-direction: column; }
       footer           { flex-direction: column; text-align: center; padding: 20px; }
       .about-facts     { grid-template-columns: 1fr; }
-      .fact-item       { border-right: none; border-bottom: 1px solid var(--border); }
-      .fact-item:last-child { border-bottom: none; }
+    }
+    @media (max-width: 700px) {
+      .skills-layout { grid-template-columns: 1fr !important; }
     }
   </style>
 </head>
