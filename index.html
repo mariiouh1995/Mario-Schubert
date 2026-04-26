@@ -290,7 +290,7 @@
 
     /* ── SKILLS ── */
     #skills { background: var(--bg-2); padding: 100px 0; }
-    .skills-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 100%; }
+    .skills-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
     .skill-category {
       background: var(--bg-3); border: 1px solid var(--border);
       border-radius: var(--radius); padding: 28px 30px;
@@ -455,11 +455,13 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
       .about-grid      { grid-template-columns: 1fr; }
-      .skills-layout   { grid-template-columns: 1fr; }
       .portfolio-grid  { grid-template-columns: 1fr 1fr; }
       .portfolio-grid .feat { grid-column: span 2; }
       .edu-grid        { grid-template-columns: 1fr; }
       .contact-layout  { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 850px) {
+      .skills-layout   { grid-template-columns: 1fr !important; }
     }
     @media (max-width: 768px) {
       nav, nav.sticky  { padding: 12px 20px; }
@@ -472,9 +474,6 @@
       .contact-actions { flex-direction: column; }
       footer           { flex-direction: column; text-align: center; padding: 20px; }
       .about-facts     { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 700px) {
-      .skills-layout { grid-template-columns: 1fr !important; }
     }
   </style>
 </head>
