@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mario Schubert – Visual Designer · UX/UI · Fotograf · Content Creator</title>
   <meta name="description" content="Portfolio und Bewerbungsseite von Mario Schubert – Visual Designer, UX/UI-Spezialist, Fotograf und Content Creator aus Innsbruck.">
+
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230c0c0c'/%3E%3Ctext x='16' y='23' font-family='Inter,Arial,sans-serif' font-size='18' font-weight='900' text-anchor='middle' fill='%23e8b84b'%3Em%3C/text%3E%3C/svg%3E">
+  <meta property="og:type" content="profile">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 630'%3E%3Crect width='1200' height='630' fill='%230c0c0c'/%3E%3Crect width='6' height='630' fill='%23e8b84b'/%3E%3Ctext x='80' y='240' font-family='Arial' font-size='96' font-weight='900' fill='%23eeeeee'%3EMario%3C/text%3E%3Ctext x='80' y='340' font-family='Arial' font-size='96' font-weight='900' fill='%23e8b84b'%3ESchubert%3C/text%3E%3Ctext x='80' y='405' font-family='Arial' font-size='26' fill='%23777777'%3EVisual Designer · UX/UI · Fotograf · Content Creator%3C/text%3E%3C/svg%3E">
   <meta property="og:title" content="Mario Schubert – Visual Designer & Fotograf">
   <meta property="og:description" content="6+ Jahre Erfahrung. Drei eigene Marken. Innsbruck & Remote.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -454,16 +460,20 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
+      #glance { padding:28px 0; }
+      .glance-grid { grid-template-columns:repeat(4,1fr); }
+      .ref-grid,.ws-grid { grid-template-columns:1fr 1fr; }
       .about-grid      { grid-template-columns: 1fr; }
+      .skills-layout   { grid-template-columns: 1fr; }
       .portfolio-grid  { grid-template-columns: 1fr 1fr; }
       .portfolio-grid .feat { grid-column: span 2; }
       .edu-grid        { grid-template-columns: 1fr; }
       .contact-layout  { grid-template-columns: 1fr; }
     }
-    @media (max-width: 850px) {
-      .skills-layout { display: flex !important; flex-direction: column !important; gap: 20px; }
-    }
     @media (max-width: 768px) {
+      .glance-grid { grid-template-columns:repeat(2,1fr); }
+      .ws-grid,.ref-grid { grid-template-columns:1fr; }
+      #backToTop { bottom:16px; right:16px; }
       nav, nav.sticky  { padding: 12px 20px; }
       .nav-links       { display: none; }
       .container       { padding: 0 20px; }
@@ -474,7 +484,53 @@
       .contact-actions { flex-direction: column; }
       footer           { flex-direction: column; text-align: center; padding: 20px; }
       .about-facts     { grid-template-columns: 1fr; }
+      .fact-item       { border-right: none; border-bottom: 1px solid var(--border); }
+      .fact-item:last-child { border-bottom: none; }
     }
+
+    /* ── ABOUT PHOTO ── */
+    .about-photo-wrap { width:100%; border-radius:var(--radius); overflow:hidden; margin-bottom:20px; aspect-ratio:4/3; background:var(--bg-4); border:1px solid var(--border); }
+    .about-photo { width:100%; height:100%; object-fit:cover; object-position:top center; display:block; }
+
+    /* ── AT A GLANCE ── */
+    #glance { background:var(--bg-2); padding:36px 0; border-bottom:1px solid var(--border); }
+    .glance-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:0; border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; }
+    .glance-item { padding:18px 12px; text-align:center; border-right:1px solid var(--border); }
+    .glance-item:last-child { border-right:none; }
+    .glance-label { font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:var(--text-muted); margin-bottom:6px; }
+    .glance-value { font-size:11.5px; font-weight:700; color:var(--text-soft); line-height:1.35; }
+    .glance-value.accent { color:var(--accent); font-size:15px; font-weight:900; }
+
+    /* ── REFERENCES ── */
+    #references { padding:100px 0; background:var(--bg-3); }
+    .ref-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:8px; }
+    .ref-card { background:var(--bg-2); border:1px solid var(--border); border-radius:var(--radius); padding:28px 30px; display:flex; flex-direction:column; gap:10px; transition:border-color 0.25s; }
+    .ref-card:hover { border-color:var(--border-2); }
+    .ref-company { font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:2px; color:var(--accent); }
+    .ref-role { font-size:15px; font-weight:700; color:var(--text); }
+    .ref-period { font-size:11.5px; font-weight:600; color:var(--text-muted); }
+    .ref-quote { font-size:13.5px; color:var(--text-muted); font-style:italic; line-height:1.7; border-left:3px solid var(--accent); padding-left:16px; margin:4px 0; }
+    .ref-download { display:inline-block; margin-top:8px; align-self:flex-start; font-size:12.5px; font-weight:700; color:var(--accent); border:1px solid var(--accent-border); background:var(--accent-bg); padding:8px 16px; border-radius:var(--radius-sm); transition:background 0.2s, color 0.2s; }
+    .ref-download:hover { background:var(--accent); color:#000; }
+
+    /* ── ARBEITSWEISE ── */
+    #workstyle { padding:100px 0; background:var(--bg); }
+    .ws-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:8px; }
+    .ws-card { background:var(--bg-2); border:1px solid var(--border); border-radius:var(--radius); padding:26px 24px; display:flex; flex-direction:column; gap:12px; transition:border-color 0.25s, transform 0.25s; }
+    .ws-card:hover { border-color:var(--accent-border); transform:translateY(-3px); }
+    .ws-icon { width:32px; height:32px; color:var(--accent); flex-shrink:0; }
+    .ws-title { font-size:14px; font-weight:800; color:var(--text); letter-spacing:-0.2px; }
+    .ws-desc { font-size:12.5px; color:var(--text-muted); line-height:1.65; }
+
+    /* ── BACK TO TOP ── */
+    #backToTop { position:fixed; bottom:28px; right:28px; z-index:800; width:42px; height:42px; background:var(--bg-4); border:1px solid var(--border-2); color:var(--text-muted); border-radius:10px; cursor:pointer; font-size:18px; transition:all 0.25s; opacity:0; pointer-events:none; }
+    #backToTop.visible { opacity:1; pointer-events:auto; }
+    #backToTop:hover { border-color:var(--accent-border); color:var(--accent); background:var(--bg-5); }
+
+    /* ── FOOTER ── */
+    footer { padding:40px 40px 28px; border-top:1px solid var(--border); display:flex; flex-direction:column; align-items:center; text-align:center; gap:12px; }
+    .footer-privacy { font-size:11px; color:var(--text-muted); max-width:680px; margin:8px auto 0; line-height:1.6; opacity:0.6; }
+
   </style>
 </head>
 <body>
@@ -488,12 +544,13 @@
     <a href="#skills">Skills</a>
     <a href="#portfolio">Portfolio</a>
     <a href="#education">Ausbildung</a>
+    <a href="#languages">Sprachen</a>
     <a href="#contact">Kontakt</a>
   </div>
   <div style="display:flex;align-items:center;gap:10px">
     <div class="nav-social">
-      <a href="https://www.linkedin.com/in/marioschub" target="_blank" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-      <a href="https://www.instagram.com/marioschub/" target="_blank" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+      <a href="https://www.linkedin.com/in/marioschub" target="_blank" rel="noopener noreferrer" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+      <a href="https://www.instagram.com/marioschub/" target="_blank" rel="noopener noreferrer" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
     </div>
     <a href="#contact" class="nav-links nav-cta" style="color:#000;font-weight:700;font-size:13px;padding:8px 18px;background:var(--accent);border-radius:7px;transition:background 0.2s">Kontakt</a>
   </div>
@@ -506,7 +563,7 @@
   <div class="hero-inner">
     <div class="hero-availability">
       <div class="avail-dot"></div>
-      Verfügbar &nbsp;·&nbsp; Innsbruck &amp; Remote
+      Verfügbar für neue Projekte &amp; Festanstellungen – Innsbruck &amp; Remote
     </div>
     <h1 class="hero-name">
       <span class="first">Mario</span>
@@ -531,7 +588,7 @@
     <div class="hero-ctas">
       <a href="#portfolio" class="btn-primary">Projekte ansehen</a>
       <a href="#contact" class="btn-outline">Kontakt aufnehmen</a>
-      <a href="#experience" class="btn-outline">Lebenslauf</a>
+      <a href="#experience" class="btn-outline">Werdegang ansehen</a>
     </div>
     <div class="hero-meta">
       <div class="hero-meta-item">Standort&nbsp; <span>Innsbruck, Tirol</span></div>
@@ -542,9 +599,24 @@
       <div class="hero-meta-sep"></div>
       <div class="hero-meta-item">Sprachen&nbsp; <span>DE · EN · FR</span></div>
       <div class="hero-social-links">
-        <a href="https://www.linkedin.com/in/marioschub" target="_blank" class="social-link"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg> LinkedIn</a>
-        <a href="https://www.instagram.com/marioschub/" target="_blank" class="social-link"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg> Instagram</a>
+        <a href="https://www.linkedin.com/in/marioschub" target="_blank" rel="noopener noreferrer" class="social-link"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg> LinkedIn</a>
+        <a href="https://www.instagram.com/marioschub/" target="_blank" rel="noopener noreferrer" class="social-link"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg> Instagram</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUF EINEN BLICK -->
+<section id="glance">
+  <div class="container">
+    <div class="glance-grid">
+      <div class="glance-item"><div class="glance-label">Erfahrung</div><div class="glance-value accent">6+</div></div>
+      <div class="glance-item"><div class="glance-label">Kern-Rollen</div><div class="glance-value">Visual Design · UX/UI · Foto</div></div>
+      <div class="glance-item"><div class="glance-label">Spezialisierung</div><div class="glance-value">Kreativ · Hochschule · Automotive</div></div>
+      <div class="glance-item"><div class="glance-label">Standort</div><div class="glance-value">Innsbruck, AT · Remote</div></div>
+      <div class="glance-item"><div class="glance-label">Abschluss</div><div class="glance-value">B.Sc. UX Design (THI)</div></div>
+      <div class="glance-item"><div class="glance-label">Sprachen</div><div class="glance-value">DE · EN C1 · FR B1</div></div>
+      <div class="glance-item"><div class="glance-label">Verfügbar ab</div><div class="glance-value accent">sofort</div></div>
     </div>
   </div>
 </section>
@@ -758,178 +830,168 @@
 </section>
 
 <div class="divider"></div>
+<!-- NACHWEISE -->
+<section id="references">
+  <div class="container">
+    <div class="label fi">Nachweise</div>
+    <h2 class="h2 fi">Referenzen &amp; Evaluationen</h2>
+    <p class="lead fi">Arbeitszeugnisse und Kursevaluationen liegen als Originaldokumente vor – einsehbar über den gemeinsamen Link.</p>
+    <div class="ref-grid fi" style="grid-template-columns:repeat(3,1fr)">
+
+      <div class="ref-card">
+        <div class="ref-company">in-tech GmbH</div>
+        <div class="ref-role">PMO Coordinator</div>
+        <div class="ref-period">06/2023 – 02/2024</div>
+        <div class="ref-quote">„Außerordentliche Qualitäten in Projektmanagement und Qualitätssicherung. Höchst zuverlässig. Hervorragende Teamarbeit."</div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-company">Achtzig20 GmbH</div>
+        <div class="ref-role">Management Consultant · Content &amp; UX</div>
+        <div class="ref-period">2019 – 05/2023</div>
+        <div class="ref-quote">„Herausragende Expertise in Medienproduktion, UX Design und Performance Marketing. Außerordentliche Initiative. Höchste Empfehlung."</div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-company">TH Ingolstadt (THI)</div>
+        <div class="ref-role">Kursevaluation – Digitalfotografie &amp; Bildbearbeitung</div>
+        <div class="ref-period">SS 2025 &amp; SS 2026</div>
+        <div class="ref-quote">Studentische Evaluation der praxisorientierten Lehrveranstaltung – zwei aufeinanderfolgende Semester, 90+ Studierende.</div>
+      </div>
+
+    </div>
+
+    <div class="fi" style="margin-top:28px;text-align:center">
+      <a href="https://drive.google.com/drive/folders/11VJiJAPH-3MzFiBWOrTZQrT0DkJRhuIp?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-primary" style="display:inline-flex;align-items:center;gap:9px;font-size:14px">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Alle Dokumente auf Google Drive ansehen
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
 
 <!-- SKILLS -->
 <section id="skills">
   <div class="container">
     <div class="label fi">Kenntnisse</div>
     <h2 class="h2 fi">Skills &amp; Tools</h2>
-    <p class="lead fi">Von der Kamera bis zum Code – ein breites Spektrum an Werkzeugen, die ich im Alltag einsetze.</p>
+    <p class="lead fi">Fokussiert auf das, was ich täglich einsetze und nachweislich belegen kann.</p>
     <div class="skills-layout">
 
+      <!-- Design & Visual: B.Sc. UX + Adobe CC in CV + WYLDWORKS Projekte -->
       <div class="skill-category fi">
         <div class="sc-title">Design &amp; Visual</div>
         <div class="sc-pills">
-          <span class="sc-pill">Figma</span>
-          <span class="sc-pill">Photoshop</span>
-          <span class="sc-pill">Illustrator</span>
-          <span class="sc-pill">InDesign</span>
-          <span class="sc-pill">UX/UI</span>
-          <span class="sc-pill">Grafikdesign</span>
-          <span class="sc-pill">Procreate</span>
-          <span class="sc-pill">Webflow</span>
+          <span class="sc-pill strong">Figma</span>
+          <span class="sc-pill strong">Photoshop</span>
+          <span class="sc-pill strong">Illustrator</span>
+          <span class="sc-pill strong">InDesign</span>
+          <span class="sc-pill strong">UX/UI Design</span>
+          <span class="sc-pill strong">Branding</span>
+          <span class="sc-pill strong">Wireframing</span>
+          <span class="sc-pill strong">Prototyping</span>
           <span class="sc-pill">Canva</span>
-          <span class="sc-pill">Branding</span>
-          <span class="sc-pill">Wireframing</span>
-          <span class="sc-pill">Prototyping</span>
-          <span class="sc-pill">Typography</span>
-          <span class="sc-pill">Illustration</span>
-          <span class="sc-pill">Logodesign</span>
-          <span class="sc-pill">Farbkonzepte</span>
-          <span class="sc-pill">Moodboarding</span>
+          <span class="sc-pill">Grafikdesign</span>
           <span class="sc-pill">Printdesign</span>
-          <span class="sc-pill">Packaging</span>
-          <span class="sc-pill">Layoutgestaltung</span>
-          <span class="sc-pill">Compositing</span>
-          <span class="sc-pill">Retouching</span>
+          <span class="sc-pill">Logodesign</span>
         </div>
       </div>
 
+      <!-- Foto & Video: eigene Marken marioschub.com + WYLDWORKS + THI-Lehre -->
       <div class="skill-category fi d1">
         <div class="sc-title">Foto &amp; Video</div>
         <div class="sc-pills">
-          <span class="sc-pill">Lightroom</span>
-          <span class="sc-pill">Final Cut Pro</span>
+          <span class="sc-pill strong">Lightroom</span>
+          <span class="sc-pill strong">Final Cut Pro</span>
+          <span class="sc-pill strong">Hochzeitsfotografie</span>
+          <span class="sc-pill strong">Kameratechnik</span>
+          <span class="sc-pill strong">Belichtung</span>
+          <span class="sc-pill strong">Bildkomposition</span>
           <span class="sc-pill">Premiere Pro</span>
           <span class="sc-pill">After Effects</span>
-          <span class="sc-pill">Motion 5</span>
           <span class="sc-pill">Color Grading</span>
-          <span class="sc-pill">Sound Design</span>
-          <span class="sc-pill">Artlist</span>
-          <span class="sc-pill">Drohne</span>
           <span class="sc-pill">Produktfotografie</span>
-          <span class="sc-pill">Hochzeitsfotografie</span>
           <span class="sc-pill">Reportage</span>
-          <span class="sc-pill">Kameratechnik</span>
-          <span class="sc-pill">Belichtung</span>
-          <span class="sc-pill">Bildkomposition</span>
-          <span class="sc-pill">Portraitfotografie</span>
-          <span class="sc-pill">Eventfotografie</span>
-          <span class="sc-pill">Architekturfotografie</span>
+          <span class="sc-pill">Drohne</span>
           <span class="sc-pill">Schnitt</span>
-          <span class="sc-pill">Podcast</span>
-          <span class="sc-pill">Untertitelung</span>
-          <span class="sc-pill">Motion Graphics</span>
-          <span class="sc-pill">Studiobeleuchtung</span>
         </div>
       </div>
 
+      <!-- Digital & Development: eigene Kursplattform (Vercel), Google Ads in CV, THI -->
       <div class="skill-category fi d2">
-        <div class="sc-title">Development &amp; Digital</div>
+        <div class="sc-title">Digital &amp; Development</div>
         <div class="sc-pills">
-          <span class="sc-pill">HTML</span>
-          <span class="sc-pill">CSS</span>
-          <span class="sc-pill">JavaScript</span>
-          <span class="sc-pill">Python</span>
-          <span class="sc-pill">Java</span>
-          <span class="sc-pill">Webdesign</span>
-          <span class="sc-pill">Responsive Design</span>
-          <span class="sc-pill">Vercel</span>
-          <span class="sc-pill">GitHub</span>
-          <span class="sc-pill">WordPress</span>
+          <span class="sc-pill strong">Google Ads (SEA)</span>
+          <span class="sc-pill strong">Social Media</span>
+          <span class="sc-pill strong">Moodle / E-Learning</span>
+          <span class="sc-pill">HTML &amp; CSS</span>
           <span class="sc-pill">Webflow</span>
-          <span class="sc-pill">CMS</span>
-          <span class="sc-pill">SEO</span>
-          <span class="sc-pill">Google Ads</span>
-          <span class="sc-pill">Analytics</span>
-          <span class="sc-pill">Conversion</span>
-          <span class="sc-pill">A/B-Testing</span>
-          <span class="sc-pill">Tracking</span>
-          <span class="sc-pill">Remarketing</span>
-          <span class="sc-pill">Performance</span>
-          <span class="sc-pill">Social Media</span>
-          <span class="sc-pill">Newsletter</span>
-          <span class="sc-pill">E-Commerce</span>
-          <span class="sc-pill">Moodle</span>
-          <span class="sc-pill">E-Learning</span>
-          <span class="sc-pill">Deployment</span>
-          <span class="sc-pill">Hosting</span>
+          <span class="sc-pill">WordPress</span>
+          <span class="sc-pill">Vercel</span>
+          <span class="sc-pill">Webdesign</span>
         </div>
       </div>
 
+      <!-- Methodik: in-tech Zeugnis + Achtzig20 Zeugnis + THI-Lehre -->
       <div class="skill-category fi d3">
         <div class="sc-title">Methodik &amp; Management</div>
         <div class="sc-pills">
-          <span class="sc-pill">Projektmanagement</span>
+          <span class="sc-pill strong">Projektmanagement</span>
+          <span class="sc-pill strong">Teamleitung</span>
+          <span class="sc-pill strong">Mentoring &amp; Lehre</span>
+          <span class="sc-pill strong">Qualitätssicherung</span>
           <span class="sc-pill">SCRUM</span>
-          <span class="sc-pill">Agile</span>
           <span class="sc-pill">A-SPICE</span>
-          <span class="sc-pill">Atlassian</span>
-          <span class="sc-pill">Jira</span>
-          <span class="sc-pill">Confluence</span>
-          <span class="sc-pill">Kanban</span>
-          <span class="sc-pill">Pitching</span>
-          <span class="sc-pill">Präsentation</span>
+          <span class="sc-pill">Atlassian / Jira</span>
           <span class="sc-pill">Workshops</span>
-          <span class="sc-pill">Moderation</span>
-          <span class="sc-pill">Beratung</span>
-          <span class="sc-pill">Teamleitung</span>
-          <span class="sc-pill">Personalführung</span>
-          <span class="sc-pill">Qualitätssicherung</span>
-          <span class="sc-pill">Risikomanagement</span>
-          <span class="sc-pill">Prozessoptimierung</span>
-          <span class="sc-pill">Contentstrategie</span>
-          <span class="sc-pill">Briefing</span>
           <span class="sc-pill">Konzeption</span>
-          <span class="sc-pill">Storyboarding</span>
-          <span class="sc-pill">Budgetplanung</span>
-          <span class="sc-pill">Stakeholder</span>
-          <span class="sc-pill">Reporting</span>
-          <span class="sc-pill">Onboarding</span>
-          <span class="sc-pill">Iteration</span>
-          <span class="sc-pill">Feedbackkultur</span>
-          <span class="sc-pill">Zeitplanung</span>
-          <span class="sc-pill">Priorisierung</span>
-          <span class="sc-pill">Lehre</span>
-          <span class="sc-pill">Didaktik</span>
-          <span class="sc-pill">Mentoring</span>
-          <span class="sc-pill">Kundenakquise</span>
-          <span class="sc-pill">Angebotserstellung</span>
+          <span class="sc-pill">Contentstrategie</span>
         </div>
       </div>
 
+      <!-- KI: täglich im Einsatz, eigene Kursplattform, THI-Kurs -->
       <div class="skill-category fi d4" style="grid-column: span 2;">
-        <div class="sc-title">Künstliche Intelligenz &amp; KI-Projekte</div>
+        <div class="sc-title">KI-Tools &amp; Workflows</div>
         <div class="sc-pills">
-          <span class="sc-pill">ChatGPT</span>
-          <span class="sc-pill">Claude</span>
-          <span class="sc-pill">Perplexity</span>
-          <span class="sc-pill">Prompt Engineering</span>
-          <span class="sc-pill">KI-Workflow</span>
+          <span class="sc-pill strong">ChatGPT</span>
+          <span class="sc-pill strong">Claude</span>
+          <span class="sc-pill strong">Perplexity</span>
+          <span class="sc-pill strong">Prompt Engineering</span>
+          <span class="sc-pill strong">KI in der Lehre</span>
           <span class="sc-pill">Midjourney</span>
-          <span class="sc-pill">Stable Diffusion</span>
           <span class="sc-pill">Adobe Firefly</span>
-          <span class="sc-pill">Runway</span>
-          <span class="sc-pill">ElevenLabs</span>
-          <span class="sc-pill">Gamma</span>
           <span class="sc-pill">Notion AI</span>
-          <span class="sc-pill">Copilot</span>
-          <span class="sc-pill">KI-Bildgenerierung</span>
-          <span class="sc-pill">KI-Videogenerierung</span>
-          <span class="sc-pill">KI-Texterstellung</span>
-          <span class="sc-pill">AI-Recherche</span>
-          <span class="sc-pill">KI in der Lehre</span>
-          <span class="sc-pill">THI-Kursplattform</span>
-          <span class="sc-pill">KI-Content</span>
-          <span class="sc-pill">Automatisierung</span>
-          <span class="sc-pill">KI-Skripterstellung</span>
-          <span class="sc-pill">AI-Didaktik</span>
+          <span class="sc-pill">KI-Workflow-Automatisierung</span>
         </div>
       </div>
 
     </div>
   </div>
 </section>
+
+<div class="divider"></div>
+<!-- ARBEITSWEISE -->
+<section id="workstyle">
+  <div class="container">
+    <div class="label fi">Arbeitsweise</div>
+    <h2 class="h2 fi">Wie ich arbeite</h2>
+    <p class="lead fi">Was Zeugnisse belegen – und was dahintersteckt.</p>
+    <div class="ws-grid">
+      <div class="ws-card fi"><svg class="ws-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg><div class="ws-title">Strategisches Mitdenken</div><div class="ws-desc">Ich arbeite nicht nur auf Briefing-Basis – ich bringe eigene Ideen ein und liefere Ergebnisse, die über die Aufgabenstellung hinausgehen.</div></div>
+      <div class="ws-card fi d1"><svg class="ws-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg><div class="ws-title">Selbstorganisation &amp; Eigenverantwortung</div><div class="ws-desc">Als Selbstständiger mit drei Marken manage ich Projekte, Deadlines und Kundenkommunikation eigenständig.</div></div>
+      <div class="ws-card fi d2"><svg class="ws-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><div class="ws-title">Teamführungserfahrung</div><div class="ws-desc">Co-Leitung eines 10-köpfigen Kreativteams bei Achtzig20. Zeugnisnote: außerordentlich.</div></div>
+      <div class="ws-card fi d3"><svg class="ws-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg><div class="ws-title">Hybride Arbeitserfahrung</div><div class="ws-desc">Remote und Vor-Ort – MS Teams, Atlassian, asynchrone Workflows. Lehr- und Projektarbeit hybrid seit 2021.</div></div>
+      <div class="ws-card fi d4"><svg class="ws-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><div class="ws-title">Kundenkommunikation</div><div class="ws-desc">Akquise, Briefing, Feedback-Loops, Abnahme – ich begleite Kunden durch den gesamten Projektzyklus.</div></div>
+      <div class="ws-card fi d5"><svg class="ws-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><div class="ws-title">Interdisziplinäres Denken</div><div class="ws-desc">Von der Kamera über Figma-Prototypen bis zum A-SPICE-Prozess – mein Werkzeugkasten funktioniert über Disziplinen hinweg.</div></div>
+    </div>
+  </div>
+</section>
+
+
+
 
 <div class="divider"></div>
 
@@ -956,6 +1018,7 @@
           <div class="p-name">WYLDWORKS</div>
           <div class="p-desc">Kreative Foto- &amp; Videoagentur für den Mittelstand. Imagefilm, Short-Form Reels, Social Media Management und Content-Coaching. Referenzen u.a.: Aston Martin, Teufel, Padle City.</div>
           <div class="p-tags"><span class="p-tag">Agentur</span><span class="p-tag">Video</span><span class="p-tag">Social Media</span><span class="p-tag">Branding</span></div>
+          <div class="p-tags" style="margin-top:4px"><span class="p-tag" style="background:var(--bg-5);border-color:var(--border-2);color:var(--text-muted)">Aston Martin</span><span class="p-tag" style="background:var(--bg-5);border-color:var(--border-2);color:var(--text-muted)">Teufel</span><span class="p-tag" style="background:var(--bg-5);border-color:var(--border-2);color:var(--text-muted)">Padle City</span></div>
           <span class="p-link">Website besuchen &#8594;</span>
         </div>
       </div>
@@ -1119,7 +1182,7 @@
       <div class="fi d1">
         <div class="contact-info-stack">
           <div class="ci-row">
-            <div><div class="ci-label">Adresse</div><a href="https://maps.google.com/?q=Bäckerbühlgasse+14,+6020+Innsbruck" target="_blank">Bäckerbühlgasse 14, 6020 Innsbruck</a></div>
+            <div><div class="ci-label">Adresse</div><a href="https://maps.google.com/?q=Bäckerbühlgasse+14,+6020+Innsbruck" target="_blank" rel="noopener noreferrer">Bäckerbühlgasse 14, 6020 Innsbruck</a></div>
           </div>
           <div class="ci-row">
             <div><div class="ci-label">E-Mail</div><a href="mailto:servus@marioschub.com">servus@marioschub.com</a></div>
@@ -1128,14 +1191,14 @@
             <div><div class="ci-label">Mobil</div><a href="tel:+436776368154">+43 677 636 8154</a></div>
           </div>
           <div class="ci-row">
-            <div><div class="ci-label">Portfolio</div><a href="https://www.wyldworks.de" target="_blank">wyldworks.de</a></div>
+            <div><div class="ci-label">Portfolio</div><a href="https://www.wyldworks.de" target="_blank" rel="noopener noreferrer">wyldworks.de</a></div>
           </div>
           <div class="ci-social-row">
-            <a href="https://www.linkedin.com/in/marioschub" target="_blank" class="ci-social-btn">
+            <a href="https://www.linkedin.com/in/marioschub" target="_blank" rel="noopener noreferrer" class="ci-social-btn">
               <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
               LinkedIn
             </a>
-            <a href="https://www.instagram.com/marioschub/" target="_blank" class="ci-social-btn">
+            <a href="https://www.instagram.com/marioschub/" target="_blank" rel="noopener noreferrer" class="ci-social-btn">
               <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
               Instagram
             </a>
@@ -1151,11 +1214,14 @@
   <div class="footer-brand">mario<span>schubert</span></div>
   <p>Visual Designer · UX/UI · Fotograf · Content Creator · Innsbruck &copy; 2026</p>
   <div class="footer-links">
-    <a href="https://www.wyldworks.de" target="_blank">wyldworks.de</a>
-    <a href="https://www.marioschub.com" target="_blank">marioschub.com</a>
-    <a href="https://www.dasspieglein.com" target="_blank">dasspieglein.com</a>
+    <a href="https://www.wyldworks.de" target="_blank" rel="noopener noreferrer">wyldworks.de</a>
+    <a href="https://www.marioschub.com" target="_blank" rel="noopener noreferrer">marioschub.com</a>
+    <a href="https://www.dasspieglein.com" target="_blank" rel="noopener noreferrer">dasspieglein.com</a>
   </div>
+  <p class="footer-privacy">Diese Seite ist nicht öffentlich zugänglich und dient ausschließlich Bewerbungszwecken. Es werden keine personenbezogenen Daten erhoben, gespeichert oder weitergegeben. Kein Tracking, keine Cookies. Inhaber: Mario Enrico Schubert, Bäckerbühlgasse 14, 6020 Innsbruck.</p>
 </footer>
+
+<button id="backToTop" aria-label="Zurück nach oben" title="Zurück nach oben">↑</button>
 
 <script>
   // Sticky nav
@@ -1192,6 +1258,10 @@
       if (t) t.scrollIntoView({ behavior: "smooth" });
     });
   });
+
+  const btt = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => btt.classList.toggle('visible', window.scrollY > 400));
+  btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 </script>
 </body>
 </html>
